@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dự án Chế độ xem Responsive (1 Tệp Duy Nhất)</title>
+
+  <!-- VIẾT MÃ CSS TRỰC TIẾP VÀO TRONG THẺ <style> -->
+  <style>
+    /* ===================================================
+       1. CẤU HÌNH MẶC ĐỊNH (MOBILE VIEW: < 772px)
+       =================================================== */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      padding: 20px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    header h1 {
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    header ul {
+      list-style: none;
+      display: inline-block;
+      text-align: left;
+      margin-top: 10px;
+      line-height: 1.6;
+    }
+
+    /* Container chính chứa các div */
+    .container {
+      display: flex;
+      flex-direction: column; /* Xếp dọc 1 cột cho Mobile */
+      align-items: center;
+      gap: 20px;
+    }
+
+    /* Kiểu dáng cho từng div */
+    .card {
+      width: 90%; /* Dùng 90% chiều rộng trên Mobile */
+      background: #ffffff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 15px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    .card img {
+      width: 100%;
+      height: auto;
+      border-radius: 4px;
+    }
+
+    .card h2 {
+      margin: 10px 0 5px 0;
+      font-size: 1.2rem;
+      color: #222;
+    }
+
+    .card p {
+      color: #666;
+    }
+
+    /* ===================================================
+       2. TRUY VẤN PHƯƠNG TIỆN #1: TABLET VIEW (>= 772px)
+       =================================================== */
+    @media screen and (min-width: 772px) {
+      .container {
+        flex-direction: row; /* Dàn hàng ngang */
+        flex-wrap: wrap;     /* Tự động xuống hàng khi đầy */
+        justify-content: center;
+      }
+
+      /* Bố cục div bằng 45% chiều rộng chế độ xem */
+      .card {
+        width: 45vw;
+      }
+
+      /* Hình ảnh không quá 30% chiều cao của chế độ xem */
+      .card img {
+        max-height: 30vh;
+        object-fit: cover; /* Tránh méo hình khi giới hạn chiều cao */
+      }
+    }
+
+    /* ===================================================
+       3. TRUY VẤN PHƯƠNG TIỆN #2: LARGE SCREEN VIEW (>= 998px)
+       =================================================== */
+    @media screen and (min-width: 998px) {
+      /* Bố cục div bằng 30% chiều rộng chế độ xem */
+      .card {
+        width: 30vw;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Dự Án Responsive Layout</h1>
+    <p>Thu nhỏ hoặc mở rộng trình duyệt để kiểm tra bố cục:</p>
+    <ul>
+      <li>📱 <strong>&lt; 772px:</strong> 1 div ngang (Xếp dọc trên Mobile)</li>
+      <li>💻 <strong>772px - 997px:</strong> 2 div ngang (Tablet, ảnh &le; 30% vh)</li>
+      <li>🖥️ <strong>&ge; 998px:</strong> 3 div ngang (Desktop, div = 30% vw)</li>
+    </ul>
+  </header>
+
+  <main class="container">
+    <div class="card">
+      <img src="https://picsum.photos/id/1015/600/400" alt="Khối 1">
+      <h2>Khối Nội Dung 1</h2>
+      <p>Thẻ div thứ nhất trong bố cục responsive.</p>
+    </div>
+
+    <div class="card">
+      <img src="https://picsum.photos/id/1018/600/400" alt="Khối 2">
+      <h2>Khối Nội Dung 2</h2>
+      <p>Thẻ div thứ hai trong bố cục responsive.</p>
+    </div>
+
+    <div class="card">
+      <img src="https://picsum.photos/id/1019/600/400" alt="Khối 3">
+      <h2>Khối Nội Dung 3</h2>
+      <p>Thẻ div thứ ba trong bố cục responsive.</p>
+    </div>
+  </main>
+
+</body>
+</html>
